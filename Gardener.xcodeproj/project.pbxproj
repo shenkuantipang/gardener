@@ -11,8 +11,6 @@
 		E3B2FD7E24A3CB9B00308BC3 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B2FD7D24A3CB9B00308BC3 /* Tests_macOS.swift */; };
 		E3B2FD8024A3CB9B00308BC3 /* GardenerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B2FD5724A3CB9A00308BC3 /* GardenerApp.swift */; };
 		E3B2FD8124A3CB9B00308BC3 /* GardenerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B2FD5724A3CB9A00308BC3 /* GardenerApp.swift */; };
-		E3B2FD8224A3CB9B00308BC3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B2FD5824A3CB9A00308BC3 /* ContentView.swift */; };
-		E3B2FD8324A3CB9B00308BC3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B2FD5824A3CB9A00308BC3 /* ContentView.swift */; };
 		E3B2FD8424A3CB9B00308BC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3B2FD5924A3CB9B00308BC3 /* Assets.xcassets */; };
 		E3B2FD8524A3CB9B00308BC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3B2FD5924A3CB9B00308BC3 /* Assets.xcassets */; };
 		E3B2FD9E24A3D38800308BC3 /* Vocabulary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B2FD9D24A3D38800308BC3 /* Vocabulary.swift */; };
@@ -21,6 +19,8 @@
 		E3B2FDA624A3D70100308BC3 /* VocabularyOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B2FDA524A3D70100308BC3 /* VocabularyOverview.swift */; };
 		E3B2FDAB24A3D8CD00308BC3 /* VocabularyResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B2FDAA24A3D8CD00308BC3 /* VocabularyResource.swift */; };
 		E3B2FDAC24A3D8CD00308BC3 /* VocabularyResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B2FDAA24A3D8CD00308BC3 /* VocabularyResource.swift */; };
+		E3E0BCD924A3E24E0054E1D8 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E0BCD824A3E24E0054E1D8 /* AppView.swift */; };
+		E3E0BCDC24A3E2810054E1D8 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E0BCDB24A3E2810054E1D8 /* AppView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,6 @@
 
 /* Begin PBXFileReference section */
 		E3B2FD5724A3CB9A00308BC3 /* GardenerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenerApp.swift; sourceTree = "<group>"; };
-		E3B2FD5824A3CB9A00308BC3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E3B2FD5924A3CB9B00308BC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3B2FD5E24A3CB9B00308BC3 /* Gardener.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gardener.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3B2FD6124A3CB9B00308BC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,6 +58,8 @@
 		E3B2FDA124A3D4A800308BC3 /* VocabularyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyCardView.swift; sourceTree = "<group>"; };
 		E3B2FDA524A3D70100308BC3 /* VocabularyOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyOverview.swift; sourceTree = "<group>"; };
 		E3B2FDAA24A3D8CD00308BC3 /* VocabularyResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyResource.swift; sourceTree = "<group>"; };
+		E3E0BCD824A3E24E0054E1D8 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		E3E0BCDB24A3E2810054E1D8 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +109,7 @@
 		E3B2FD5624A3CB9A00308BC3 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				E3B2FD5724A3CB9A00308BC3 /* GardenerApp.swift */,
-				E3B2FD5824A3CB9A00308BC3 /* ContentView.swift */,
+				E3E0BCDF24A3E4A20054E1D8 /* App */,
 				E3B2FD9C24A3D37900308BC3 /* Vocabulary */,
 				E3B2FD5924A3CB9B00308BC3 /* Assets.xcassets */,
 			);
@@ -130,6 +130,7 @@
 		E3B2FD6024A3CB9B00308BC3 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				E3E0BCD724A3E22C0054E1D8 /* App */,
 				E3B2FDA824A3D83400308BC3 /* Vocabulary */,
 				E3B2FD6124A3CB9B00308BC3 /* Info.plist */,
 			);
@@ -139,6 +140,7 @@
 		E3B2FD6724A3CB9B00308BC3 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				E3E0BCDA24A3E2770054E1D8 /* App */,
 				E3B2FD6824A3CB9B00308BC3 /* Info.plist */,
 				E3B2FD6924A3CB9B00308BC3 /* macOS.entitlements */,
 			);
@@ -187,6 +189,30 @@
 				E3B2FDA524A3D70100308BC3 /* VocabularyOverview.swift */,
 			);
 			path = Overview;
+			sourceTree = "<group>";
+		};
+		E3E0BCD724A3E22C0054E1D8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E3E0BCD824A3E24E0054E1D8 /* AppView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E3E0BCDA24A3E2770054E1D8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E3E0BCDB24A3E2810054E1D8 /* AppView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E3E0BCDF24A3E4A20054E1D8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E3B2FD5724A3CB9A00308BC3 /* GardenerApp.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,7 +374,7 @@
 			files = (
 				E3B2FDA224A3D4A800308BC3 /* VocabularyCardView.swift in Sources */,
 				E3B2FDAB24A3D8CD00308BC3 /* VocabularyResource.swift in Sources */,
-				E3B2FD8224A3CB9B00308BC3 /* ContentView.swift in Sources */,
+				E3E0BCD924A3E24E0054E1D8 /* AppView.swift in Sources */,
 				E3B2FD8024A3CB9B00308BC3 /* GardenerApp.swift in Sources */,
 				E3B2FD9E24A3D38800308BC3 /* Vocabulary.swift in Sources */,
 				E3B2FDA624A3D70100308BC3 /* VocabularyOverview.swift in Sources */,
@@ -359,9 +385,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3B2FD8324A3CB9B00308BC3 /* ContentView.swift in Sources */,
 				E3B2FD8124A3CB9B00308BC3 /* GardenerApp.swift in Sources */,
 				E3B2FDA424A3D4D700308BC3 /* Vocabulary.swift in Sources */,
+				E3E0BCDC24A3E2810054E1D8 /* AppView.swift in Sources */,
 				E3B2FDAC24A3D8CD00308BC3 /* VocabularyResource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
