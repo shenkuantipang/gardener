@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct VocabularyCardView: View {
     
@@ -14,8 +15,9 @@ struct VocabularyCardView: View {
     var body: some View {
         HStack(spacing: 12) {
             
-            Image("Placeholder")
+            WebImage(url: vocabulary.imageUrl)
                 .resizable()
+                .placeholder(Image("Placeholder"))
                 .frame(width: 32, height: 32)
                 
             

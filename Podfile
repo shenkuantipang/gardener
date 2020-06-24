@@ -3,8 +3,8 @@ target 'iOS' do
   use_frameworks!
 
   # Pods for iOS
-  pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
+  pod 'SDWebImageSwiftUI'
 
 end
 
