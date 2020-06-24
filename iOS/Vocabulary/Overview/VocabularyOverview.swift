@@ -22,7 +22,7 @@ struct VocabularyOverview: View {
             .navigationBarTitle("Vocabulary")
             .onAppear(perform: styleTableView)
         }
-        .onAppear { vocabularyResource.loadAll(for: "") }
+        .onAppear { vocabularyResource.loadAll(for: "r11Ylzh8WGO6fHTTd8TL") }
         
     }
     

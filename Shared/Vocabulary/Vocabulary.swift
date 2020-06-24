@@ -29,3 +29,24 @@ struct Vocabulary: Identifiable {
     }
     
 }
+
+
+// MARK: - Firebase initialization
+
+import Firebase
+
+extension Vocabulary {
+    
+    init?(id: String, data: [String: Any]) {
+        guard
+            let nativeName = data["nativeName"] as? String,
+            let foreignName = data["foreignName"] as? String,
+            let createdAt = (data["createdAt"] as? Timestamp)?.dateValue()
+        else { return nil }
+        
+        let urlString = data["imageUrl"] as? String
+        let imageUrl = URL(string: urlString ?? "")
+        
+        self.init(id: id, nativeName: nativeName, foreignName: foreignName, imageUrl: imageUrl, createdAt: createdAt)
+    }
+}
