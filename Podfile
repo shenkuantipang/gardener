@@ -4,6 +4,7 @@ target 'iOS' do
 
   # Pods for iOS
   pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
   pod 'SDWebImageSwiftUI'
 
 end

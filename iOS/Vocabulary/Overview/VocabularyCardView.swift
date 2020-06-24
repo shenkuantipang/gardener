@@ -35,7 +35,7 @@ struct VocabularyCardView: View {
 
 struct VocabularyCardView_Previews: PreviewProvider {
     static var previews: some View {
-        let vocabulary = Vocabulary(nativeName: "der Wald", foreignName: "el bosque")
+        let vocabulary = Vocabulary(foreignName: "el bosque", nativeName: "der Wald", imageUrl: nil)
         return VocabularyCardView(vocabulary: vocabulary)
             .previewLayout(.fixed(width: 400, height: 80))
     }

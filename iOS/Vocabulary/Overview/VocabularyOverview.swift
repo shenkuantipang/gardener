@@ -9,6 +9,8 @@ import SwiftUI
 
 struct VocabularyOverview: View {
     
+    private let listId = "r11Ylzh8WGO6fHTTd8TL"
+    
     @ObservedObject var vocabularyResource: VocabularyResource
     
     var body: some View {
@@ -22,7 +24,7 @@ struct VocabularyOverview: View {
             .navigationBarTitle("Vocabulary")
             .onAppear(perform: styleTableView)
         }
-        .onAppear { vocabularyResource.loadAll(for: "r11Ylzh8WGO6fHTTd8TL") }
+        .onAppear { vocabularyResource.loadAll(for: listId) }
         
     }
     

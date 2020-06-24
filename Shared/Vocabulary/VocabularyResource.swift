@@ -6,7 +6,7 @@
 //
 
 import Firebase
-import Foundation
+import FirebaseFirestoreSwift
 
 class VocabularyResource: ObservableObject {
     
@@ -18,9 +18,15 @@ class VocabularyResource: ObservableObject {
     func loadAll(for listId: String) {
         let collection = listsDatabase.document(listId).collection("vocabulary").order(by: "createdAt", descending: true)
         collection.addSnapshotListener { (querySnapshot, error) in
-            guard error == nil else { return }
-            self.vocabulary = querySnapshot!.documents.compactMap { Vocabulary(id: $0.documentID, data: $0.data()) }
+            guard error == nil, let snapshot = querySnapshot else { return }
+            self.vocabulary = snapshot.documents.compactMap { try? $0.data(as: Vocabulary.self) }
         }
+    }
+    
+    
+    func add(_ vocabulary: Vocabulary, to listId: String) {
+        let collection = listsDatabase.document(listId).collection("vocabulary")
+        let _ = try? collection.addDocument(from: vocabulary)
     }
     
 }
