@@ -15,5 +15,6 @@ target 'macOS' do
 
   # Pods for macOS
   pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
 
 end

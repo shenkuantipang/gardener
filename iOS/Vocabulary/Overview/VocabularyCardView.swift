@@ -20,7 +20,6 @@ struct VocabularyCardView: View {
                 .placeholder(Image("Placeholder"))
                 .frame(width: 32, height: 32)
                 
-            
             VStack(alignment: .leading) {
                 Text(vocabulary.foreignName).font(.headline)
                 Text(vocabulary.nativeName).font(.body).fontWeight(.light)
@@ -35,7 +34,7 @@ struct VocabularyCardView: View {
 
 struct VocabularyCardView_Previews: PreviewProvider {
     static var previews: some View {
-        let vocabulary = Vocabulary(foreignName: "el bosque", nativeName: "der Wald", imageUrl: nil)
+        let vocabulary = Vocabulary(foreignName: "el bosque", nativeName: "der Wald")
         return VocabularyCardView(vocabulary: vocabulary)
             .previewLayout(.fixed(width: 400, height: 80))
     }

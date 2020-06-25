@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct GardenerAppView: View {
+    
+    @ObservedObject
+    var vocabularyStore: VocabularyStore
+    
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
@@ -15,6 +19,7 @@ struct GardenerAppView: View {
 
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
-        GardenerAppView()
+        let vocabularyStore = VocabularyMockStore()
+        return GardenerAppView(vocabularyStore: vocabularyStore)
     }
 }

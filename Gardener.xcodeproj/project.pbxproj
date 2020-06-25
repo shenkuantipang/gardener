@@ -19,8 +19,8 @@
 		E3B2FDA224A3D4A800308BC3 /* VocabularyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B2FDA124A3D4A800308BC3 /* VocabularyCardView.swift */; };
 		E3B2FDA424A3D4D700308BC3 /* Vocabulary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B2FD9D24A3D38800308BC3 /* Vocabulary.swift */; };
 		E3B2FDA624A3D70100308BC3 /* VocabularyOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B2FDA524A3D70100308BC3 /* VocabularyOverview.swift */; };
-		E3B2FDAB24A3D8CD00308BC3 /* VocabularyResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B2FDAA24A3D8CD00308BC3 /* VocabularyResource.swift */; };
-		E3B2FDAC24A3D8CD00308BC3 /* VocabularyResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B2FDAA24A3D8CD00308BC3 /* VocabularyResource.swift */; };
+		E3B2FDAB24A3D8CD00308BC3 /* VocabularyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B2FDAA24A3D8CD00308BC3 /* VocabularyStore.swift */; };
+		E3B2FDAC24A3D8CD00308BC3 /* VocabularyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B2FDAA24A3D8CD00308BC3 /* VocabularyStore.swift */; };
 		E3E0BCD924A3E24E0054E1D8 /* GardenerAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E0BCD824A3E24E0054E1D8 /* GardenerAppView.swift */; };
 		E3E0BCDC24A3E2810054E1D8 /* GardenerAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E0BCDB24A3E2810054E1D8 /* GardenerAppView.swift */; };
 		E3E0BCE124A3EBEE0054E1D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3E0BCE024A3EBEE0054E1D8 /* GoogleService-Info.plist */; };
@@ -67,7 +67,7 @@
 		E3B2FD9D24A3D38800308BC3 /* Vocabulary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vocabulary.swift; sourceTree = "<group>"; };
 		E3B2FDA124A3D4A800308BC3 /* VocabularyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyCardView.swift; sourceTree = "<group>"; };
 		E3B2FDA524A3D70100308BC3 /* VocabularyOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyOverview.swift; sourceTree = "<group>"; };
-		E3B2FDAA24A3D8CD00308BC3 /* VocabularyResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyResource.swift; sourceTree = "<group>"; };
+		E3B2FDAA24A3D8CD00308BC3 /* VocabularyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyStore.swift; sourceTree = "<group>"; };
 		E3E0BCD824A3E24E0054E1D8 /* GardenerAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenerAppView.swift; sourceTree = "<group>"; };
 		E3E0BCDB24A3E2810054E1D8 /* GardenerAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenerAppView.swift; sourceTree = "<group>"; };
 		E3E0BCE024A3EBEE0054E1D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				E3B2FD9D24A3D38800308BC3 /* Vocabulary.swift */,
-				E3B2FDAA24A3D8CD00308BC3 /* VocabularyResource.swift */,
+				E3B2FDAA24A3D8CD00308BC3 /* VocabularyStore.swift */,
 			);
 			path = Vocabulary;
 			sourceTree = "<group>";
@@ -496,7 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3B2FDA224A3D4A800308BC3 /* VocabularyCardView.swift in Sources */,
-				E3B2FDAB24A3D8CD00308BC3 /* VocabularyResource.swift in Sources */,
+				E3B2FDAB24A3D8CD00308BC3 /* VocabularyStore.swift in Sources */,
 				E3E0BCD924A3E24E0054E1D8 /* GardenerAppView.swift in Sources */,
 				E3B2FD8024A3CB9B00308BC3 /* GardenerApp.swift in Sources */,
 				E3B2FD9E24A3D38800308BC3 /* Vocabulary.swift in Sources */,
@@ -511,7 +511,7 @@
 				E3B2FD8124A3CB9B00308BC3 /* GardenerApp.swift in Sources */,
 				E3B2FDA424A3D4D700308BC3 /* Vocabulary.swift in Sources */,
 				E3E0BCDC24A3E2810054E1D8 /* GardenerAppView.swift in Sources */,
-				E3B2FDAC24A3D8CD00308BC3 /* VocabularyResource.swift in Sources */,
+				E3B2FDAC24A3D8CD00308BC3 /* VocabularyStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

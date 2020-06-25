@@ -9,14 +9,15 @@ import SwiftUI
 
 struct VocabularyOverview: View {
     
-    private let listId = "r11Ylzh8WGO6fHTTd8TL"
+    @ObservedObject
+    var vocabularyStore: VocabularyStore
     
-    @ObservedObject var vocabularyResource: VocabularyResource
+    private let listId = "r11Ylzh8WGO6fHTTd8TL"
     
     var body: some View {
         NavigationView {
             List() {
-                ForEach(vocabularyResource.vocabulary) { vocabulary in
+                ForEach(vocabularyStore.vocabulary) { vocabulary in
                     VocabularyCardView(vocabulary: vocabulary)
                 }
                 .listRowBackground(Color(UIColor.systemGroupedBackground))
@@ -24,8 +25,7 @@ struct VocabularyOverview: View {
             .navigationBarTitle("Vocabulary")
             .onAppear(perform: styleTableView)
         }
-        .onAppear { vocabularyResource.loadAll(for: listId) }
-        
+        .onAppear { vocabularyStore.loadAll(for: listId) }
     }
     
     
@@ -36,7 +36,7 @@ struct VocabularyOverview: View {
 
 struct VocabularyOverview_Previews: PreviewProvider {
     static var previews: some View {
-        let vocabularyResource = VocabularyResource()
-        return VocabularyOverview(vocabularyResource: vocabularyResource)
+        let vocabularyStore = VocabularyMockStore()
+        return VocabularyOverview(vocabularyStore: vocabularyStore)
     }
 }

@@ -9,11 +9,13 @@ import SwiftUI
 
 struct GardenerAppView: View {
     
+    @ObservedObject var vocabularyStore: VocabularyStore
+    
     @State private var selection = 0
     
     var body: some View {
         TabView(selection: $selection) {
-                VocabularyOverview(vocabularyResource: VocabularyResource())
+                VocabularyOverview(vocabularyStore: vocabularyStore)
                     .tabItem {
                         Image(systemName: "book.fill").imageScale(.large)
                         Text("Vocabulary")
@@ -37,6 +39,7 @@ struct GardenerAppView: View {
 
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
-        GardenerAppView()
+        let vocabularyStore = VocabularyMockStore()
+        return GardenerAppView(vocabularyStore: vocabularyStore)
     }
 }

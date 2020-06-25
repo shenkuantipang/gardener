@@ -11,13 +11,16 @@ import Firebase
 @main
 struct GardenerApp: App {
     
+    @StateObject
+    private var vocabularyStore = VocabularyStore()
+    
     init() {
         FirebaseApp.configure()
     }
     
     var body: some Scene {
         WindowGroup {
-            GardenerAppView()
+            GardenerAppView(vocabularyStore: vocabularyStore)
         }
     }
 }
