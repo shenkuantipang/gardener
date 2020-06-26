@@ -13,13 +13,13 @@ struct VocabularyLevelIndicator: View {
     
     var body: some View {
         
-        let levelCircle = Circle()
+        let levelBackground = Circle()
             .fill(Color.accentColor)
             .frame(width: 24, height: 24)
         
         return Text(level.description)
             .foregroundColor(.white)
-            .background(levelCircle)
+            .background(levelBackground)
     }
 }
 

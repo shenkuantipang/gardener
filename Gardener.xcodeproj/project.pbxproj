@@ -229,8 +229,8 @@
 			isa = PBXGroup;
 			children = (
 				E3B2FDA124A3D4A800308BC3 /* VocabularyCardView.swift */,
-				E3B2FDA524A3D70100308BC3 /* VocabularyOverview.swift */,
 				E3D2BF9024A6985500A59C09 /* VocabularyLevelIndicator.swift */,
+				E3B2FDA524A3D70100308BC3 /* VocabularyOverview.swift */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
