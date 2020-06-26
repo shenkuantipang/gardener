@@ -34,10 +34,9 @@ struct VocabularyOverview: View {
     
     
     private var addButton: some View {
-        let buttonAction = { self.showAddVocabularyModal.toggle() }
-        let sheetContent = AddVocabularyView() { vocabularyStore.add($0, to: listId) }
-        return Button(action: buttonAction) { Text("Add") }
-            .sheet(isPresented: self.$showAddVocabularyModal) { sheetContent }
+        let addVocabularyView = AddVocabularyView() { vocabularyStore.add($0, to: listId) }
+        return Button("Add") { self.showAddVocabularyModal.toggle() }
+            .sheet(isPresented: self.$showAddVocabularyModal) { addVocabularyView }
     }
     
     

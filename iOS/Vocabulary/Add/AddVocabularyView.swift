@@ -1,6 +1,6 @@
 //
 //  AddVocabularyView.swift
-//  iOS
+//  Gardener
 //
 //  Created by Stefan Cimander on 27.06.20.
 //
@@ -16,7 +16,6 @@ struct AddVocabularyView: View {
     
     @Environment(\.presentationMode)
     private var presentationMode
-    
     
     var body: some View {
         NavigationView {
@@ -35,15 +34,19 @@ struct AddVocabularyView: View {
     }
     
     private var cancelButton: some View {
-        Button("Cancel") { self.dismiss() }
+        Button("Cancel") { dismiss() }
     }
     
     private var doneButton: some View {
-        Button("Done") {
-            let vocabulary = Vocabulary(foreignName: foreignName, nativeName: nativeName)
-            onAdd(vocabulary)
-            dismiss()
-        }
+        Button("Done") { addVocabulary(); dismiss() }
+            .disabled(foreignName.isEmpty || nativeName.isEmpty)
+            .font(.headline)
+    }
+    
+    
+    private func addVocabulary() {
+        let vocabulary = Vocabulary(foreignName: foreignName, nativeName: nativeName)
+        onAdd(vocabulary)
     }
     
     private func dismiss() {

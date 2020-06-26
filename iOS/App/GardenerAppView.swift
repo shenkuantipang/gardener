@@ -1,6 +1,6 @@
 //
 //  GardenerAppView.swift
-//  iOS
+//  Gardener
 //
 //  Created by Stefan Cimander on 24.06.20.
 //
@@ -36,6 +36,9 @@ struct GardenerAppView: View {
         }
     }
 }
+
+
+// MARK: - Preview provider
 
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {

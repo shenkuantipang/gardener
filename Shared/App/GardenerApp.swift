@@ -1,6 +1,6 @@
 //
 //  GardenerApp.swift
-//  Shared
+//  Gardener
 //
 //  Created by Stefan Cimander on 24.06.20.
 //

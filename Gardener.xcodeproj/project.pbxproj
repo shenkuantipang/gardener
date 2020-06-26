@@ -215,6 +215,7 @@
 				E3B2FD9D24A3D38800308BC3 /* Vocabulary.swift */,
 				E3B2FDAA24A3D8CD00308BC3 /* VocabularyStore.swift */,
 				E3D2BF8D24A6913100A59C09 /* VocabularyTestData.swift */,
+				E3D2BF9024A6985500A59C09 /* VocabularyLevelIndicator.swift */,
 			);
 			path = Vocabulary;
 			sourceTree = "<group>";
@@ -233,7 +234,6 @@
 			children = (
 				E3B2FDA524A3D70100308BC3 /* VocabularyOverview.swift */,
 				E3B2FDA124A3D4A800308BC3 /* VocabularyCardView.swift */,
-				E3D2BF9024A6985500A59C09 /* VocabularyLevelIndicator.swift */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
