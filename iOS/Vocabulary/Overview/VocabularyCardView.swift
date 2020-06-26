@@ -25,12 +25,19 @@ struct VocabularyCardView: View {
                 Text(vocabulary.nativeName).font(.body).fontWeight(.light)
             }
             Spacer()
+            
+            VocabularyLevelIndicator(level: vocabulary.level)
         }
         .padding()
+        .padding([.trailing])
         .background(Color(UIColor.secondarySystemGroupedBackground))
         .cornerRadius(10.0)
     }
+    
 }
+
+
+// MARK: - Previews
 
 struct VocabularyCardView_Previews: PreviewProvider {
     static var previews: some View {

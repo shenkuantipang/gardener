@@ -39,7 +39,7 @@ struct GardenerAppView: View {
 
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
-        let vocabularyStore = VocabularyMockStore()
+        let vocabularyStore = VocabularyTestData()
         return GardenerAppView(vocabularyStore: vocabularyStore)
     }
 }

@@ -36,7 +36,7 @@ struct VocabularyOverview: View {
 
 struct VocabularyOverview_Previews: PreviewProvider {
     static var previews: some View {
-        let vocabularyStore = VocabularyMockStore()
+        let vocabularyStore = VocabularyTestData()
         return VocabularyOverview(vocabularyStore: vocabularyStore)
     }
 }

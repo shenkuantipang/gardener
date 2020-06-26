@@ -18,6 +18,22 @@ struct Vocabulary: Identifiable, Codable {
     let foreignName: String
     let nativeName: String
     let imageUrl: URL?
+    let level: Int
+    
+    ///
+    /// Convenience initializer.
+    ///
+    /// - Parameter id: An identifier of the vocabulary entry.
+    /// - Parameter foreignName: The name of the vocabulary in foreign language.
+    /// - Parameter nativeName: The name of the vocabulary in native language.
+    ///
+    init(id: String?, foreignName: String, nativeName: String) {
+        self.id = id
+        self.nativeName = nativeName
+        self.foreignName = foreignName
+        self.imageUrl = nil
+        self.level = 1
+    }
     
     ///
     /// Minimal convenience initializer.
@@ -26,9 +42,7 @@ struct Vocabulary: Identifiable, Codable {
     /// - Parameter nativeName: The name of the vocabulary in native language.
     ///
     init(foreignName: String, nativeName: String) {
-        self.foreignName = foreignName
-        self.nativeName = nativeName
-        self.imageUrl = nil
+        self.init(id: nil, foreignName: foreignName, nativeName: nativeName)
     }
     
 }

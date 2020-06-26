@@ -8,6 +8,10 @@
 import Firebase
 import FirebaseFirestoreSwift
 
+///
+/// Vocabulary store for loading and adding vocabulary entries
+/// saved  in the Firebase Firestore database.
+///
 class VocabularyStore: ObservableObject {
     
     @Published
@@ -25,8 +29,12 @@ class VocabularyStore: ObservableObject {
     func loadAll(for listId: String) {
         let collection = listsCollection.document(listId).collection("vocabulary").order(by: "createdAt", descending: true)
         collection.addSnapshotListener { (querySnapshot, error) in
-            guard error == nil, let snapshot = querySnapshot else { return }
-            self.vocabulary = snapshot.documents.compactMap { try? $0.data(as: Vocabulary.self) }
+            if let error = error {
+                print("Could not load vocabulary entries from list with id \(listId) - \(error.localizedDescription)")
+                return
+            }
+            guard let snapshot = querySnapshot else { return }
+            self.vocabulary = snapshot.documents.compactMap(self.toVocabulary)
         }
     }
     
@@ -37,28 +45,22 @@ class VocabularyStore: ObservableObject {
     /// - Parameter listId: The id of the list to add the vocabulary entry to.
     ///
     func add(_ vocabulary: Vocabulary, to listId: String) {
-        let collection = listsCollection.document(listId).collection("vocabulary")
-        let _ = try? collection.addDocument(from: vocabulary)
+        do {
+            let collection = listsCollection.document(listId).collection("vocabulary")
+            let _ = try collection.addDocument(from: vocabulary)
+        } catch {
+            print("Could not add vocabulary \(vocabulary.foreignName) to list with id \(listId) - \(error.localizedDescription)")
+        }
     }
     
-}
-
-
-// MARK: - Mock implementation
-
-class VocabularyMockStore: VocabularyStore {
     
-    override func loadAll(for listId: String) {
-        self.vocabulary = [
-            Vocabulary(foreignName: "la flor", nativeName: "die Blume"),
-            Vocabulary(foreignName: "el bosque", nativeName: "der Wald"),
-            Vocabulary(foreignName: "el arbol", nativeName: "der Baum"),
-            Vocabulary(foreignName: "el jardin", nativeName: "der Garten")
-        ]
-    }
-    
-    override func add(_ vocabulary: Vocabulary, to listId: String) {
-        self.vocabulary.append(vocabulary)
+    private func toVocabulary(snapshot: QueryDocumentSnapshot) -> Vocabulary? {
+        do {
+            return try snapshot.data(as: Vocabulary.self)
+        } catch {
+            print("Could not parse snapshot data \(snapshot.data()) as vocabulary instance - \(error.localizedDescription)")
+            return nil
+        }
     }
     
 }
