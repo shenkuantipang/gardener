@@ -35,8 +35,9 @@ struct VocabularyOverview: View {
     
     private var addButton: some View {
         let buttonAction = { self.showAddVocabularyModal.toggle() }
+        let sheetContent = AddVocabularyView() { vocabularyStore.add($0, to: listId) }
         return Button(action: buttonAction) { Text("Add") }
-            .sheet(isPresented: self.$showAddVocabularyModal) { AddVocabularyView() }
+            .sheet(isPresented: self.$showAddVocabularyModal) { sheetContent }
     }
     
     
@@ -45,6 +46,9 @@ struct VocabularyOverview: View {
         UITableView.appearance().backgroundColor = .systemGroupedBackground
     }
 }
+
+
+// MARK: - Previews provider
 
 struct VocabularyOverview_Previews: PreviewProvider {
     static var previews: some View {

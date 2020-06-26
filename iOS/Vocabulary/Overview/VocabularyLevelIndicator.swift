@@ -24,7 +24,7 @@ struct VocabularyLevelIndicator: View {
 }
 
 
-// MARK: - Previews
+// MARK: - Previews provider
 
 struct VocabularyLevelIndicator_Previews: PreviewProvider {
     static var previews: some View {

@@ -37,7 +37,7 @@ struct VocabularyCardView: View {
 }
 
 
-// MARK: - Previews
+// MARK: - Previews provider
 
 struct VocabularyCardView_Previews: PreviewProvider {
     static var previews: some View {
