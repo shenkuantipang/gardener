@@ -12,6 +12,9 @@ struct VocabularyOverview: View {
     @ObservedObject
     var vocabularyStore: VocabularyStore
     
+    @State
+    private var showAddVocabularyModal = false
+    
     private let listId = "r11Ylzh8WGO6fHTTd8TL"
     
     var body: some View {
@@ -22,14 +25,23 @@ struct VocabularyOverview: View {
                 }
                 .listRowBackground(Color(UIColor.systemGroupedBackground))
             }
-            .navigationBarTitle("Vocabulary")
             .onAppear(perform: styleTableView)
+            .navigationBarTitle("Vocabulary")
+            .navigationBarItems(trailing: addButton)
         }
         .onAppear { vocabularyStore.loadAll(for: listId) }
     }
     
     
+    private var addButton: some View {
+        let buttonAction = { self.showAddVocabularyModal.toggle() }
+        return Button(action: buttonAction) { Text("Add") }
+            .sheet(isPresented: self.$showAddVocabularyModal) { AddVocabularyView() }
+    }
+    
+    
     private func styleTableView() {
+        UITableView.appearance().separatorStyle = .none
         UITableView.appearance().backgroundColor = .systemGroupedBackground
     }
 }
