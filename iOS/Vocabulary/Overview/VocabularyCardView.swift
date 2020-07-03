@@ -28,8 +28,8 @@ struct VocabularyCardView: View {
             
             VocabularyLevelIndicator(level: vocabulary.level)
         }
-        .padding()
         .padding([.trailing])
+        .padding()
         .background(Color(UIColor.secondarySystemGroupedBackground))
         .cornerRadius(10.0)
     }
@@ -37,7 +37,7 @@ struct VocabularyCardView: View {
 }
 
 
-// MARK: - Previews provider
+// MARK: - Preview provider
 
 struct VocabularyCardView_Previews: PreviewProvider {
     static var previews: some View {

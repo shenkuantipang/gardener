@@ -54,6 +54,24 @@ class VocabularyStore: ObservableObject {
     }
     
     
+    ///
+    ///
+    ///
+    ///
+    ///
+    ///
+    func delete(at offsets: IndexSet, from listId: String) {
+        let collection = listsCollection.document(listId).collection("vocabulary")
+        let allIds = vocabulary.compactMap(\.id)
+        vocabulary.remove(atOffsets: offsets)
+        
+        let remainingIds = vocabulary.compactMap(\.id)
+        let deletedIds = allIds.filter { !remainingIds.contains($0) }
+        
+        deletedIds.forEach { collection.document($0).delete() }
+    }
+    
+    
     private func toVocabulary(snapshot: QueryDocumentSnapshot) -> Vocabulary? {
         do {
             return try snapshot.data(as: Vocabulary.self)

@@ -45,8 +45,7 @@ struct AddVocabularyView: View {
     
     
     private func addVocabulary() {
-        let vocabulary = Vocabulary(foreignName: foreignName, nativeName: nativeName)
-        onAdd(vocabulary)
+        onAdd(Vocabulary(foreignName: foreignName, nativeName: nativeName))
     }
     
     private func dismiss() {

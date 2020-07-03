@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+let listId = "r11Ylzh8WGO6fHTTd8TL"
+
 struct VocabularyOverview: View {
     
     @ObservedObject
@@ -15,19 +17,30 @@ struct VocabularyOverview: View {
     @State
     private var showAddVocabularyModal = false
     
-    private let listId = "r11Ylzh8WGO6fHTTd8TL"
+    @State
+    private var showConfirmDeletionSheet = false
+    
+    @State
+    private var deletionCandidateName: String?
+    
+    @State
+    private var deletionCandidateOffsets: IndexSet?
+    
     
     var body: some View {
         NavigationView {
             List() {
                 ForEach(vocabularyStore.vocabulary) { vocabulary in
                     VocabularyCardView(vocabulary: vocabulary)
+                        .contextMenu { deleteButton(vocabulary) }
                 }
+                .onDelete(perform: self.askToConfirmDeletion)
                 .listRowBackground(Color(UIColor.systemGroupedBackground))
             }
             .onAppear(perform: styleTableView)
             .navigationBarTitle("Vocabulary")
             .navigationBarItems(trailing: addButton)
+            .actionSheet(isPresented: $showConfirmDeletionSheet) { confirmDeletionSheet }
         }
         .onAppear { vocabularyStore.loadAll(for: listId) }
     }
@@ -39,15 +52,48 @@ struct VocabularyOverview: View {
             .sheet(isPresented: self.$showAddVocabularyModal) { addVocabularyView }
     }
     
+    private func deleteButton(_ vocabulary: Vocabulary) -> some View {
+        Button(action: { askToConfirmDeletion(of: vocabulary) },
+               label: { Label("Delete", systemImage: "trash") })
+    }
+    
+    private var confirmDeletionSheet: ActionSheet {
+        let deletionCandidateName = self.deletionCandidateName ?? "this word"
+        let confirmDeletionTitle = Text("Do you really want to delete \(deletionCandidateName)?")
+        let confirmDeletionButton = ActionSheet.Button.destructive(Text("Delete word")) {
+            guard let offsets = self.deletionCandidateOffsets else { return }
+            self.vocabularyStore.delete(at: offsets, from: listId)
+            self.deletionCandidateName = nil
+            self.deletionCandidateOffsets = nil
+        }
+        return ActionSheet(title: confirmDeletionTitle, message: nil, buttons: [confirmDeletionButton, .cancel()])
+    }
+    
+    
+    private func askToConfirmDeletion(at offsets: IndexSet) {
+        deletionCandidateName = offsets.map { "\"\(self.vocabularyStore.vocabulary[$0].foreignName)\"" }.first
+        deletionCandidateOffsets = offsets
+        showConfirmDeletionSheet.toggle()
+    }
+    
+    private func askToConfirmDeletion(of vocabulary: Vocabulary) {
+        guard let index = vocabularyStore.vocabulary.firstIndex(where: { $0.id == vocabulary.id }) else { return }
+        deletionCandidateName = "\"\(vocabulary.foreignName)\""
+        deletionCandidateOffsets = IndexSet(arrayLiteral: index)
+        showConfirmDeletionSheet.toggle()
+    }
+    
     
     private func styleTableView() {
         UITableView.appearance().separatorStyle = .none
+        UITableView.appearance().separatorColor = .systemGroupedBackground
         UITableView.appearance().backgroundColor = .systemGroupedBackground
     }
+    
 }
 
 
-// MARK: - Previews provider
+// MARK: - Preview provider
 
 struct VocabularyOverview_Previews: PreviewProvider {
     static var previews: some View {
