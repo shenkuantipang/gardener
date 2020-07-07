@@ -17,19 +17,22 @@ struct GardenerAppView: View {
         TabView(selection: $selection) {
             VocabularyOverview(vocabularyStore: vocabularyStore)
                 .tabItem {
-                    Image(systemName: "book.fill").imageScale(.large)
+                    let imageName = selection == 0 ? "book.fill" : "book"
+                    Image(systemName: imageName).imageScale(.large)
                     Text("Vocabulary")
                 }
                 .tag(0)
-            Text("Exercise")
+            ExerciseView()
                 .tabItem {
-                    Image(systemName: "play.fill").imageScale(.large)
+                    let imageName = selection == 1 ? "play.fill" : "play"
+                    Image(systemName: imageName).imageScale(.large)
                     Text("Exercise")
                 }
                 .tag(1)
-            Text("Profile")
+            ProfileView()
                 .tabItem {
-                    Image(systemName: "person.fill").imageScale(.large)
+                    let imageName = selection == 2 ? "person.fill" : "person"
+                    Image(systemName: imageName).imageScale(.large)
                     Text("Profile")
                 }
                 .tag(2)

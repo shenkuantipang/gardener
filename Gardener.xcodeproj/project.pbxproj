@@ -30,6 +30,9 @@
 		E3E0BCDC24A3E2810054E1D8 /* GardenerAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E0BCDB24A3E2810054E1D8 /* GardenerAppView.swift */; };
 		E3E0BCE124A3EBEE0054E1D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3E0BCE024A3EBEE0054E1D8 /* GoogleService-Info.plist */; };
 		E3E0BCE224A3EBEE0054E1D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3E0BCE024A3EBEE0054E1D8 /* GoogleService-Info.plist */; };
+		E3E4D50424B47526006AE45D /* DeleteVocabularyConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E4D50324B47526006AE45D /* DeleteVocabularyConfig.swift */; };
+		E3E4D50A24B48D94006AE45D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E4D50924B48D94006AE45D /* ProfileView.swift */; };
+		E3E4D50C24B48E10006AE45D /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E4D50B24B48E10006AE45D /* ExerciseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +82,9 @@
 		E3E0BCD824A3E24E0054E1D8 /* GardenerAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenerAppView.swift; sourceTree = "<group>"; };
 		E3E0BCDB24A3E2810054E1D8 /* GardenerAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenerAppView.swift; sourceTree = "<group>"; };
 		E3E0BCE024A3EBEE0054E1D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E3E4D50324B47526006AE45D /* DeleteVocabularyConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteVocabularyConfig.swift; sourceTree = "<group>"; };
+		E3E4D50924B48D94006AE45D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		E3E4D50B24B48E10006AE45D /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				E3E0BCDF24A3E4A20054E1D8 /* App */,
+				E3E4D50524B48D60006AE45D /* Exercise */,
+				E3E4D50624B48D68006AE45D /* Profile */,
 				E3B2FD9C24A3D37900308BC3 /* Vocabulary */,
 				E3B2FD5924A3CB9B00308BC3 /* Assets.xcassets */,
 				E3E0BCE024A3EBEE0054E1D8 /* GoogleService-Info.plist */,
@@ -175,6 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				E3E0BCD724A3E22C0054E1D8 /* App */,
+				E3E4D50724B48D77006AE45D /* Exercise */,
+				E3E4D50824B48D7E006AE45D /* Profile */,
 				E3B2FDA824A3D83400308BC3 /* Vocabulary */,
 				E3B2FD6124A3CB9B00308BC3 /* Info.plist */,
 			);
@@ -224,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				E3D2BF9324A6A71700A59C09 /* Add */,
+				E3E4D50024B47497006AE45D /* Delete */,
 				E3B2FDA924A3D8B500308BC3 /* Overview */,
 			);
 			path = Vocabulary;
@@ -268,6 +279,44 @@
 				E3B2FD5724A3CB9A00308BC3 /* GardenerApp.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		E3E4D50024B47497006AE45D /* Delete */ = {
+			isa = PBXGroup;
+			children = (
+				E3E4D50324B47526006AE45D /* DeleteVocabularyConfig.swift */,
+			);
+			path = Delete;
+			sourceTree = "<group>";
+		};
+		E3E4D50524B48D60006AE45D /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Exercise;
+			sourceTree = "<group>";
+		};
+		E3E4D50624B48D68006AE45D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		E3E4D50724B48D77006AE45D /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				E3E4D50B24B48E10006AE45D /* ExerciseView.swift */,
+			);
+			path = Exercise;
+			sourceTree = "<group>";
+		};
+		E3E4D50824B48D7E006AE45D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E3E4D50924B48D94006AE45D /* ProfileView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -514,14 +563,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3E4D50C24B48E10006AE45D /* ExerciseView.swift in Sources */,
 				E3B2FDA224A3D4A800308BC3 /* VocabularyCardView.swift in Sources */,
 				E3B2FDAB24A3D8CD00308BC3 /* VocabularyStore.swift in Sources */,
+				E3E4D50424B47526006AE45D /* DeleteVocabularyConfig.swift in Sources */,
 				E3E0BCD924A3E24E0054E1D8 /* GardenerAppView.swift in Sources */,
 				E3B2FD8024A3CB9B00308BC3 /* GardenerApp.swift in Sources */,
 				E3D2BF9524A6A77800A59C09 /* AddVocabularyView.swift in Sources */,
 				E3D2BF8E24A6913100A59C09 /* VocabularyTestData.swift in Sources */,
 				E3B2FD9E24A3D38800308BC3 /* Vocabulary.swift in Sources */,
 				E3D2BF9124A6985500A59C09 /* VocabularyLevelIndicator.swift in Sources */,
+				E3E4D50A24B48D94006AE45D /* ProfileView.swift in Sources */,
 				E3B2FDA624A3D70100308BC3 /* VocabularyOverview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

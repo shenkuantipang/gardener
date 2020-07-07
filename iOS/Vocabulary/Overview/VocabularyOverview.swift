@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let listId = "r11Ylzh8WGO6fHTTd8TL"
+let listId = "6dVxYryjwQZrtLzNarV9"
 
 struct VocabularyOverview: View {
     
@@ -18,13 +18,7 @@ struct VocabularyOverview: View {
     private var showAddVocabularyModal = false
     
     @State
-    private var showConfirmDeletionSheet = false
-    
-    @State
-    private var deletionCandidateName: String?
-    
-    @State
-    private var deletionCandidateOffsets: IndexSet?
+    private var deleteVocabularyConfig = DeleteVocabularyConfig()
     
     
     var body: some View {
@@ -40,7 +34,9 @@ struct VocabularyOverview: View {
             .onAppear(perform: styleTableView)
             .navigationBarTitle("Vocabulary")
             .navigationBarItems(trailing: addButton)
-            .actionSheet(isPresented: $showConfirmDeletionSheet) { confirmDeletionSheet }
+            .actionSheet(isPresented: $deleteVocabularyConfig.showConfirmDeletionSheet) {
+                confirmDeletionSheet
+            }
         }
         .onAppear { vocabularyStore.loadAll(for: listId) }
     }
@@ -58,35 +54,35 @@ struct VocabularyOverview: View {
     }
     
     private var confirmDeletionSheet: ActionSheet {
-        let deletionCandidateName = self.deletionCandidateName ?? "this word"
+        let deletionCandidateName = self.deleteVocabularyConfig.deletionCandidateName ?? "this word"
         let confirmDeletionTitle = Text("Do you really want to delete \(deletionCandidateName)?")
         let confirmDeletionButton = ActionSheet.Button.destructive(Text("Delete word")) {
-            guard let offsets = self.deletionCandidateOffsets else { return }
-            self.vocabularyStore.delete(at: offsets, from: listId)
-            self.deletionCandidateName = nil
-            self.deletionCandidateOffsets = nil
+            withAnimation { deleteVocabulary() }
         }
         return ActionSheet(title: confirmDeletionTitle, message: nil, buttons: [confirmDeletionButton, .cancel()])
     }
     
     
     private func askToConfirmDeletion(at offsets: IndexSet) {
-        deletionCandidateName = offsets.map { "\"\(self.vocabularyStore.vocabulary[$0].foreignName)\"" }.first
-        deletionCandidateOffsets = offsets
-        showConfirmDeletionSheet.toggle()
+        let deletionCandidateName = offsets.map { "\"\(self.vocabularyStore.vocabulary[$0].foreignName)\"" }.first
+        deleteVocabularyConfig.askToConfirm(with: deletionCandidateName, and: offsets)
     }
     
     private func askToConfirmDeletion(of vocabulary: Vocabulary) {
         guard let index = vocabularyStore.vocabulary.firstIndex(where: { $0.id == vocabulary.id }) else { return }
-        deletionCandidateName = "\"\(vocabulary.foreignName)\""
-        deletionCandidateOffsets = IndexSet(arrayLiteral: index)
-        showConfirmDeletionSheet.toggle()
+        let deletionCandidateName = "\"\(vocabulary.foreignName)\""
+        deleteVocabularyConfig.askToConfirm(with: deletionCandidateName, and: IndexSet(arrayLiteral: index))
+    }
+    
+    private func deleteVocabulary() {
+        guard let offsets = self.deleteVocabularyConfig.deletionCandidateOffsets else { return }
+        self.vocabularyStore.delete(at: offsets, from: listId)
+        self.deleteVocabularyConfig.reset()
     }
     
     
     private func styleTableView() {
         UITableView.appearance().separatorStyle = .none
-        UITableView.appearance().separatorColor = .systemGroupedBackground
         UITableView.appearance().backgroundColor = .systemGroupedBackground
     }
     
