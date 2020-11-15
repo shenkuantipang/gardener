@@ -20,7 +20,7 @@ struct VocabularyLevelIndicator: View {
     private var backgroundCircle: some View {
         Circle()
             .fill(Color.accentColor)
-            .frame(width: 24, height: 24)
+            .frame(width: 20, height: 20)
     }
 }
 

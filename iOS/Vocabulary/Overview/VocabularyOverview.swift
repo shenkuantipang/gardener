@@ -23,15 +23,14 @@ struct VocabularyOverview: View {
     
     var body: some View {
         NavigationView {
-            List() {
-                ForEach(vocabularyStore.vocabulary) { vocabulary in
-                    VocabularyCardView(vocabulary: vocabulary)
-                        .contextMenu { deleteButton(vocabulary) }
+            ScrollView() {
+                LazyVStack() {
+                    ForEach(vocabularyStore.vocabulary) { vocabulary in
+                        VocabularyCardView(vocabulary: vocabulary)
+                            .contextMenu { deleteButton(vocabulary) }
+                    }
                 }
-                .onDelete(perform: self.askToConfirmDeletion)
-                .listRowBackground(Color(UIColor.systemGroupedBackground))
             }
-            .onAppear(perform: styleTableView)
             .navigationBarTitle("Vocabulary")
             .navigationBarItems(trailing: addButton)
             .actionSheet(isPresented: $deleteVocabularyConfig.showConfirmDeletionSheet) {
@@ -78,12 +77,6 @@ struct VocabularyOverview: View {
         guard let offsets = self.deleteVocabularyConfig.deletionCandidateOffsets else { return }
         self.vocabularyStore.delete(at: offsets, from: listId)
         self.deleteVocabularyConfig.reset()
-    }
-    
-    
-    private func styleTableView() {
-        UITableView.appearance().separatorStyle = .none
-        UITableView.appearance().backgroundColor = .systemGroupedBackground
     }
     
 }

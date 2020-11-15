@@ -9,8 +9,8 @@ import Firebase
 import FirebaseFirestoreSwift
 
 ///
-/// Vocabulary store for loading and adding vocabulary entries
-/// saved  in the Firebase Firestore database.
+/// Vocabulary store for loading, adding and deleting vocabulary
+/// entries saved in the Firebase Firestore database.
 ///
 class VocabularyStore: ObservableObject {
     
@@ -55,10 +55,10 @@ class VocabularyStore: ObservableObject {
     
     
     ///
+    /// Deletes vocabulary entries at certain offsets from the list with a given id.
     ///
-    ///
-    ///
-    ///
+    /// - Parameter offsets: Index set containing offsets of vocabulary entries to delete.
+    /// - Parameter listId: The id of the list to delete the vocabulary entries from.
     ///
     func delete(at offsets: IndexSet, from listId: String) {
         let collection = listsCollection.document(listId).collection("vocabulary")

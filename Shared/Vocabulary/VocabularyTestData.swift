@@ -5,6 +5,8 @@
 //  Created by Stefan Cimander on 26.06.20.
 //
 
+import Foundation
+
 ///
 /// Mock implementation of the vocabulary store providing test data for previews.
 ///
@@ -21,6 +23,10 @@ class VocabularyTestData: VocabularyStore {
     
     override func add(_ vocabulary: Vocabulary, to listId: String) {
         self.vocabulary.append(vocabulary)
+    }
+    
+    override func delete(at offsets: IndexSet, from listId: String) {
+        self.vocabulary.remove(atOffsets: offsets)
     }
     
 }
