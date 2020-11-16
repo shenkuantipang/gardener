@@ -18,19 +18,15 @@ struct VocabularyOverview: View {
     private var showAddVocabularyModal = false
     
     @State
+    private var showVocabularyDetails = false
+    
+    @State
     private var deleteVocabularyConfig = DeleteVocabularyConfig()
     
     
     var body: some View {
         NavigationView {
-            ScrollView() {
-                LazyVStack() {
-                    ForEach(vocabularyStore.vocabulary) { vocabulary in
-                        VocabularyCardView(vocabulary: vocabulary)
-                            .contextMenu { deleteButton(vocabulary) }
-                    }
-                }
-            }
+            ScrollView() { vocabularyList }
             .navigationBarTitle("Vocabulary")
             .navigationBarItems(trailing: addButton)
             .actionSheet(isPresented: $deleteVocabularyConfig.showConfirmDeletionSheet) {
@@ -40,11 +36,28 @@ struct VocabularyOverview: View {
         .onAppear { vocabularyStore.loadAll(for: listId) }
     }
     
+    private var vocabularyList: some View {
+        LazyVStack() {
+            ForEach(vocabularyStore.vocabulary) { vocabulary in
+                NavigationLink(destination: EditVocabularyView(), isActive: self.$showVocabularyDetails) {
+                    VocabularyCardView(vocabulary: vocabulary)
+                }
+                .buttonStyle(PlainButtonStyle())
+                .contextMenu { editButton(vocabulary); deleteButton(vocabulary) }
+            }
+        }
+    }
+    
     
     private var addButton: some View {
         let addVocabularyView = AddVocabularyView() { vocabularyStore.add($0, to: listId) }
         return Button("Add") { self.showAddVocabularyModal.toggle() }
             .sheet(isPresented: self.$showAddVocabularyModal) { addVocabularyView }
+    }
+    
+    private func editButton(_ vocabulary: Vocabulary) -> some View {
+        Button(action: { self.showVocabularyDetails.toggle() },
+               label: { Label("Edit", systemImage: "pencil") })
     }
     
     private func deleteButton(_ vocabulary: Vocabulary) -> some View {

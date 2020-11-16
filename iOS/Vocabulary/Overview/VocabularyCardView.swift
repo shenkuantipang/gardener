@@ -14,7 +14,6 @@ struct VocabularyCardView: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            
             WebImage(url: vocabulary.imageUrl)
                 .resizable()
                 .placeholder(Image("Placeholder"))
@@ -33,7 +32,6 @@ struct VocabularyCardView: View {
         .background(Color(UIColor.secondarySystemGroupedBackground))
         .cornerRadius(10.0)
     }
-    
 }
 
 
